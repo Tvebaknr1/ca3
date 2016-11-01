@@ -1,13 +1,13 @@
-angular.module('myApp.view6', ['ngRoute'])
+angular.module('myApp.view9', ['ngRoute'])
 
         .config(['$routeProvider', function ($routeProvider) {
-            $routeProvider.when('/view6', {
-              templateUrl: 'app/view6/view6.html',
-              controller: 'View6Ctrl'
+            $routeProvider.when('/view9', {
+              templateUrl: 'app/view9/view9.html',
+              controller: 'View9Ctrl'
             });
           }])
 
-        .controller('View6Ctrl', function ($http, $scope) {
+        .controller('View9Ctrl', function ($http, $scope) {
           $http({
             method: 'GET',
             url: 'api/demouser'
