@@ -40,7 +40,7 @@ public class userdata {
         em.getTransaction().begin();
         List<String> list;
         list = new ArrayList();
-        list.add("user");
+        list.add("User");
         
         try {
             em.persist(new User(userName, PasswordStorage.createHash(password + salt),list));
