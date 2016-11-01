@@ -49,4 +49,19 @@ public class userdata {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public static void createAdmin(String userName, String password,String salt) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        List<String> list;
+        list = new ArrayList();
+        list.add("Admin");
+        
+        try {
+            em.persist(new User(userName, PasswordStorage.createHash(password + salt),list));
+            em.getTransaction().commit();
+        } catch (PasswordStorage.CannotPerformOperationException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

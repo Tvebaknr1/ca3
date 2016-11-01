@@ -39,6 +39,10 @@ public class UserFacade implements IUserFacade {
         userdata.createUser(user.getUserName(),user.getPassword(),salt);
         
     }
+    public void createAdmin(User user){
+        userdata.createAdmin(user.getUserName(),user.getPassword(),salt);
+        
+    }
     /*
   Return the Roles if users could be authenticated, otherwise null
      */
