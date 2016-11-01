@@ -11,7 +11,7 @@ import security.IUser;
 public class User implements IUser{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private int Id;
   private String password;  //Pleeeeease dont store me in plain text
   private String userName;
   List<String> roles = new ArrayList();
