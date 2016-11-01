@@ -12,7 +12,7 @@ import facades.UserFacade;
  * @author lam
  */
 public class UserFacadeFactory {
-    private static  IUserFacade instance = new UserFacade();
+    private static final  IUserFacade instance = new UserFacade();
     public static IUserFacade getInstance(){
         return instance;
     }
