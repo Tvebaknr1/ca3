@@ -1,17 +1,14 @@
 package facades;
 
-import security.IUserFacade;
 import entity.User;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import security.IUser;
+import security.IUserFacade;
 import security.PasswordStorage;
 
 public class UserFacade implements IUserFacade {
@@ -35,19 +32,18 @@ public class UserFacade implements IUserFacade {
     /**
      *
      * puttes user in database return true if success
-     * @param userName
-     * @param password
+     * @param user
      * @return succus
      */
 
-    public void createUser(String userName,String password){
+    public void createUser(User user){
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         
         try {
-            em.persist(new User(userName, PasswordStorage.createHash(password + salt)));
+            em.persist(new User(user.getUserName(), PasswordStorage.createHash(user.getPassword() + salt)));
             em.getTransaction().commit();
         } catch (PasswordStorage.CannotPerformOperationException ex) {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
