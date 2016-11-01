@@ -2,7 +2,6 @@ package rest;
 
 import com.google.gson.Gson;
 import facades.UserFacade;
-import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -10,7 +9,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @Path("demouser")
-@RolesAllowed("User")
+//@RolesAllowed("User")
 public class User
 {
     UserFacade userFacade = new UserFacade();
