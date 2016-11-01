@@ -1,12 +1,10 @@
 package facades;
 
+import datamapper.userdata;
 import entity.User;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import security.IUser;
 import security.IUserFacade;
 import security.PasswordStorage;
@@ -36,41 +34,24 @@ public class UserFacade implements IUserFacade {
      * @return succus
      */
 
+
     public void createUser(User user){
+        userdata.createUser(user.getUserName(),user.getPassword(),salt);
         
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        
-        try {
-            em.persist(new User(user.getUserName(), PasswordStorage.createHash(user.getPassword() + salt)));
-            em.getTransaction().commit();
-        } catch (PasswordStorage.CannotPerformOperationException ex) {
-            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     /*
   Return the Roles if users could be authenticated, otherwise null
      */
     @Override
     public List<String> authenticateUser(String userName, String password) {
-        
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        
-        User query;
-        query = (User) em.createQuery("SELECT i FROM User i WHERE i.userName = :userName").setParameter("userName", userName).getResultList().get(0);
-        
-        em.getTransaction().commit();
-        em.close();
+        User user = userdata.getUserByUsername(userName);
         boolean bool = false;
         try {
-            bool = PasswordStorage.verifyPassword(password + salt, query.getPassword());
+            bool = PasswordStorage.verifyPassword(password + salt, user.getPassword());
         } catch (PasswordStorage.CannotPerformOperationException | PasswordStorage.InvalidHashException ex) {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return query != null && bool ? query.getRolesAsStrings() : null;
+        return user != null && bool ? user.getRolesAsStrings() : null;
     }
 
     @Override
