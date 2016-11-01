@@ -5,4 +5,11 @@ angular.module('myApp.view5', ['ngRoute'])
               templateUrl: 'app/view5/view5.html',
               controller: 'View8Ctrl'
             });
-          }]);
+          }]).controller('View5Ctrl', function($http,$scope) {
+  $http.get('api/demoadmin')
+            .success(function (data, status, headers, config) {
+              $scope.data = data;
+            })
+            .error(function (data, status, headers, config) {
+              
+             });
