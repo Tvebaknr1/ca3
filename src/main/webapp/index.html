@@ -55,10 +55,10 @@
             <ul class="nav navbar-nav">
               <li><a href="#/view1">Home</a></li>
               <li><a href="#/view5">Documentation</a></li>
-              <li><a href="#/view6">Company Info</a></li>
-              <li><a href="#/view7">Exchange Rate Info</a></li>
-              <li><a href="#/view8">All Users</a></li>
-              <li><a href="#/view9">Create user</a></li>
+              <li><a href="#/view6" ng-show="isUser">Company Info</a></li>
+              <li><a href="#/view7" ng-show="isUser">Exchange Rate Info</a></li>
+              <li><a href="#/view8" ng-show="isAdmin">All Users</a></li>
+              <li><a href="#/view9" ng-show="!isAuthenticated">Create user</a></li>
             </ul>
             <div>
               <form class="navbar-form navbar-right" role="form" ng-show="!isAuthenticated" ng-submit="login()"  >
