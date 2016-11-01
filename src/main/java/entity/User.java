@@ -2,13 +2,22 @@ package entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import security.IUser;
-
+@Entity
 public class User implements IUser{
-  
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
   private String password;  //Pleeeeease dont store me in plain text
   private String userName;
   List<String> roles = new ArrayList();
+
+    public User() {
+    }
 
   public User(String userName, String password) {
     this.userName = userName;
