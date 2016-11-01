@@ -5,13 +5,7 @@ angular.module('myApp.view6', ['ngRoute'])
               templateUrl: 'app/view6/view6.html',
               controller: 'View6Ctrl'
             });
-          }]).controller('View6Ctrl', function($http,$scope) {
-  $http.get('api/demoadmin')
-            .success(function (data, status, headers, config) {
-              $scope.data = data;
-            })
-            .error(function (data, status, headers, config) {
-              
-             });
+          }]).controller('View8Ctrl', function ($http, $scope) {
+});
 
         
