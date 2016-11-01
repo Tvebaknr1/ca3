@@ -10,6 +10,5 @@ angular.module('myApp.view8', ['ngRoute'])
           }])
 
         .controller('View8Ctrl', function ($http, $scope) {
-          
 
         });
