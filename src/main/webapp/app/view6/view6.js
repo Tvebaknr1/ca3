@@ -5,7 +5,7 @@ angular.module('myApp.view6', ['ngRoute'])
               templateUrl: 'app/view6/view6.html',
               controller: 'View6Ctrl'
             });
-          }]).controller('View8Ctrl', function ($http, $scope) {
+          }]).controller('View6Ctrl', function ($http, $scope) {
 });
 
         
