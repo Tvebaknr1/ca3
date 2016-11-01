@@ -1,6 +1,6 @@
 <p><b>Create new user</b></p>
 
-<input type="text" value="Username"><br>
-<input type="text" value="Password"><br><br>
+<input type="text" value="Username" ng-model="username"><br>
+<input type="text" value="Password" ng-model="password"><br><br>
 
-<button id="signIn">Sign up</button>
+<button id="signIn" ng-click="add(username, password)">Sign up</button>
