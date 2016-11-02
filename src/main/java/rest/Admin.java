@@ -18,5 +18,5 @@ public class Admin {
     String now = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").format(new Date());
     return "{\"message\" : \"REST call accesible by only authenticated ADMINS\",\n"+"\"serverTime\": \""+now +"\"}"; 
   }
- 
+  
 }
