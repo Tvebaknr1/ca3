@@ -25,59 +25,42 @@ public class main {
 
     private static final Map<String, IUser> users = new HashMap<>();
     private static String salt = "salt";
+
     public static void main(String[] args) {
         HashMap<String, Object> puproperties = new HashMap();
 
 //        puproperties.put("javax.persistence.sql-load-script-source", "scripts/ClearDB.sql");
-
         //Persistence.generateSchema("lam_seedMaven_war_1.0-SNAPSHOTPU", puproperties);
         Persistence.generateSchema("ca3", null);
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
         EntityManager em = emf.createEntityManager();
-        try {
-
-            em.getTransaction().begin();
-            em.flush();
-
-            em.persist(new User("user", PasswordStorage.createHash("test" + salt)));
-
-            em.getTransaction().commit();
-        } catch (PasswordStorage.CannotPerformOperationException ex) {
-            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            em.close();
-        }
-        //Test Users
         User user = new User("user", "test");
         user.addRole("User");
+        em.getTransaction().begin();
+        em.flush();
+        em.persist(user);
+        em.getTransaction().commit();
+        em.close();
+
         users.put(user.getUserName(), user);
         em = emf.createEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.persist(new User("admin", PasswordStorage.createHash("test" + salt)));
-            em.getTransaction().commit();
-        } catch (PasswordStorage.CannotPerformOperationException ex) {
-            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            em.close();
-        }
         User admin = new User("admin", "test");
         admin.addRole("Admin");
+        em.getTransaction().begin();
+        em.persist(admin);
+        em.getTransaction().commit();
+        em.close();
+
         users.put(admin.getUserName(), admin);
         em = emf.createEntityManager();
-
-        try {
-            em.getTransaction().begin();
-            em.persist(new User("user_admin", PasswordStorage.createHash("test" + salt)));
-            em.getTransaction().commit();
-        } catch (PasswordStorage.CannotPerformOperationException ex) {
-            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            em.close();
-        }
         User both = new User("user_admin", "test");
         both.addRole("User");
         both.addRole("Admin");
+        em.getTransaction().begin();
+        em.persist(both);
+        em.getTransaction().commit();
+        em.close();
+
         users.put(both.getUserName(), both);
     }
 
