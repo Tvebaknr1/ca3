@@ -5,14 +5,15 @@
  */
 package rest;
 
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
+import com.google.gson.Gson;
+import facades.UserFacade;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriInfo;
 
 /**
  * REST Web Service
@@ -35,10 +36,21 @@ public class All {
    * Retrieves representation of an instance of rest.All
    * @return an instance of java.lang.String
    */
+      UserFacade userFacade = new UserFacade();
+
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   public String getText() {
     return " {\"message\" : \"result for all\"}";
   }
 
+  
+    @POST
+    @Path("adduser")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void postPerson(String content)
+    {
+        System.out.println("add person metode");
+        userFacade.createUser(new Gson().fromJson(content, entity.User.class));
+    }
 }
