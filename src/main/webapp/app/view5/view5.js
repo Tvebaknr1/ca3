@@ -6,11 +6,15 @@ angular.module('myApp.view5', ['ngRoute'])
                     controller: 'View5Ctrl'
                 });
             }]).controller('View5Ctrl', function ($http, $scope) {
-    $http.get('/REST12/api/admin/users').then(function (response) {
-                    $scope.persons = [response.data];
-                    $scope.statuscode = response.status;
-                    $scope.statustext = response.statustext;
-                });
+          $http({
+            method: 'GET',
+            url: 'api/admin/users'
+          }).then(function successCallback(res) {
+            $scope.data = res.data.message;
+          }, function errorCallback(res) {
+            $scope.error = res.status + ": "+ res.data.statusText;
+          });
+
 });
 
                

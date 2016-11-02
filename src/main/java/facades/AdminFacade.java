@@ -20,12 +20,13 @@ public class AdminFacade
         public List<User> getUsers(){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
         EntityManager em = emf.createEntityManager();
+        try
+        {
         em.getTransaction().begin();
         
         List<User> users = null;
 
-        try
-        {
+        
             em.getTransaction().begin();
             users = em.createQuery("Select u from User u").getResultList();
             em.getTransaction().commit();
