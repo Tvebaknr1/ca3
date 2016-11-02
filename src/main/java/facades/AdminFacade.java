@@ -15,38 +15,41 @@ import javax.persistence.Persistence;
  *
  * @author LouiseB
  */
-public class AdminFacade {
+public class AdminFacade
+{
 
-    public List<User> getUsers() {
+    public List<User> getUsers()
+    {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
         EntityManager em = emf.createEntityManager();
         try
         {
-        em.getTransaction().begin();
 
-        List<User> users = null;
-        
-        em.getTransaction().begin();
+            List<User> users = null;
+
+            em.getTransaction().begin();
             users = em.createQuery("Select u from User u").getResultList();
-            em.getTransaction().commit();
             return users;
-        } finally {
+        } finally
+        {
             em.close();
         }
 
     }
 
-    public void deleteuserbyid(int i) {
+    public void deleteuserbyid(int i)
+    {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
         EntityManager em = emf.createEntityManager();
-        try {
+        try
+        {
             em.getTransaction().begin();
             User user = em.find(User.class, i);
             em.remove(user);
             em.getTransaction().commit();
-            
-        }
-        finally{
+
+        } finally
+        {
             em.close();
         }
     }
