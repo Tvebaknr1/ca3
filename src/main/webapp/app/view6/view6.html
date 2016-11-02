@@ -2,25 +2,43 @@
 <p>This is the partial for view 6.</p>
 <div>
     <p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
-  
+
 </div>
- {{company.name}}
- {{company.address}}
- {{company.zipcode}}
- {{company.city}}
+{{company.name}}
+{{company.address}}
+{{company.zipcode}}
+{{company.city}}
 <table >
     <thead>
-    <td>name</td>
-        <td>address</td>
-        <td>zipcode</td>
-        <td>city</td>
-    </thead>
-    <tbody ng-repeat="data in company.productionunits">
+    <td>Name</td>
+    <td>Address</td>
+    <td>Zipcode</td>
+    <td>City</td>
+</thead>
+<tbody ng-repeat="data in company.productionunits">
     <tr>
         <td>{{data.name}}</td>
         <td>{{data.address}}</td>
         <td>{{data.zipcode}}</td>
         <td>{{data.city}}</td>
     </tr>
-    </tbody>
+</tbody>
 </table>
+
+<div>
+    <br>
+    <label for="search">Search Text </label><input type="text" id="search" value="required"><br>
+    <label for="options">Options </label><select id="options">    
+        <option>NAME</option>
+        <option>ADDRESS</option>
+        <option>ZIPCODE</option>
+        <option>CITY</option>
+    </select><br>
+
+
+    <label for="country">Country </label><select id="country">
+        <option>DK</option>
+        <option>NO</option>
+    </select><br>
+
+</div>

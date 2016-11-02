@@ -24,13 +24,11 @@ angular.module('myApp.view6', ['ngRoute'])
                         method: 'GET',
                         url: 'http://cvrapi.dk/api?vat=3167%208021&country=dk',
                         skipAuthorization: true,
-                        headers: {
-                            'User-Agent': "CVR API-CA3 SCHOOL Exercise-Gruppe 6, cph-ec57@cphbusiness.dk"
-                        },
+                        
                         data: {}
                     };
                     console.log("breakpoint z");
-                     return $http(req);
+                    return $http(req);
 //                             .then(function mySucces (response) {
 //                         response.data;
 //                    }, function myError (response) {
