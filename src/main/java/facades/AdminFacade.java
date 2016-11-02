@@ -38,9 +38,15 @@ public class AdminFacade {
     public void deleteuserbyid(int i) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        User user = em.find(User.class, i);
-        em.remove(user);
-        em.getTransaction().commit();
+        try {
+            em.getTransaction().begin();
+            User user = em.find(User.class, i);
+            em.remove(user);
+            em.getTransaction().commit();
+            
+        }
+        finally{
+            em.close();
+        }
     }
 }
