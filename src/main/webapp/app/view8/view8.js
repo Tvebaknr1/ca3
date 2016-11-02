@@ -11,11 +11,10 @@ angular.module('myApp.view8', ['ngRoute'])
 
         .controller('View8Ctrl', function ($http, $scope) {
    $http.get('api/admin/users')
-            .success(function (data, status, headers, config) {
+            .success(function (data) {
               $scope.data = data;
             })
-            .error(function (data, status, headers, config) {
+            .error(function () {
               
              });
-            $scope.data1 = "hej";
         });
