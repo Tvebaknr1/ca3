@@ -64,5 +64,10 @@ public class main {
 
         users.put(both.getUserName(), both);
     }
+    
+    public void updateCurrencies()
+    {
+        
+    }
 
 }
