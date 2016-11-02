@@ -19,6 +19,7 @@ angular.module('myApp.view6', ['ngRoute'])
                     var req = {
                         method: 'GET',
                         url: 'http://cvrapi.dk/api?vat=3167%208021&country=dk',
+                        skipAuthorization: true,
                         headers: {
                             'User-Agent': "CVR API-CA3 SCHOOL Exercise-Gruppe 6, cph-ec57@cphbusiness.dk"
                         },
