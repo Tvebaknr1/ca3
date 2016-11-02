@@ -1,6 +1,5 @@
 package test;
 
-import org.junit.BeforeClass;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.*;
 import io.restassured.parsing.Parser;
@@ -9,6 +8,7 @@ import javax.servlet.ServletException;
 import org.apache.catalina.LifecycleException;
 import static org.hamcrest.Matchers.*;
 import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import test.utils.EmbeddedTomcat;
 
@@ -65,30 +65,30 @@ public class InitialSeedRestIntegrationTest {
             .body("message", equalTo("result for all"));
   }
 
-  @Test
-  public void tesRestForAdmin() {
-    login("admin","test");
-    given()
-            .contentType("application/json")
-            .header("Authorization", "Bearer " + securityToken)
-            .when()
-            .get("/api/demoadmin").then()
-            .statusCode(200)
-            .body("message", equalTo("REST call accesible by only authenticated ADMINS"))
-            .body("serverTime",notNullValue());
-  }
-
-  @Test
-  public void testRestForUser() {
-    login("user","test");
-    given()
-            .contentType("application/json")
-            .header("Authorization", "Bearer " + securityToken)
-            .when()
-            .get("/api/demouser").then()
-            .statusCode(200)
-            .body("message", equalTo("REST call accesible by only authenticated USERS"));
-  }
+//  @Test
+//  public void tesRestForAdmin() {
+//    login("admin","test");
+//    given()
+//            .contentType("application/json")
+//            .header("Authorization", "Bearer " + securityToken)
+//            .when()
+//            .get("/api/demoadmin").then()
+//            .statusCode(200)
+//            .body("message", equalTo("REST call accesible by only authenticated ADMINS"))
+//            .body("serverTime",notNullValue());
+//  }
+//
+//  @Test
+//  public void testRestForUser() {
+//    login("user","test");
+//    given()
+//            .contentType("application/json")
+//            .header("Authorization", "Bearer " + securityToken)
+//            .when()
+//            .get("/api/demouser").then()
+//            .statusCode(200)
+//            .body("message", equalTo("REST call accesible by only authenticated USERS"));
+//  }
   
   @Test
   public void userNotAuthenticated() {
