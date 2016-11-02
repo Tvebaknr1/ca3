@@ -45,8 +45,12 @@ public class userdata {
         try {
             em.persist(new User(userName, PasswordStorage.createHash(password + salt),list));
             em.getTransaction().commit();
+            
         } catch (PasswordStorage.CannotPerformOperationException ex) {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            em.close();
         }
     }
     public static void createAdmin(String userName, String password,String salt) {
@@ -62,6 +66,9 @@ public class userdata {
             em.getTransaction().commit();
         } catch (PasswordStorage.CannotPerformOperationException ex) {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            em.close();
         }
     }
 }
