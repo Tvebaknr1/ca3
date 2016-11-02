@@ -27,7 +27,7 @@ public class AdminFacade
         try
         {
             em.getTransaction().begin();
-            users = em.createQuery("Select u from userName u").getResultList();
+            users = em.createQuery("Select u from User u").getResultList();
             em.getTransaction().commit();
             return users;
         } finally

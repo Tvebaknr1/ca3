@@ -5,6 +5,8 @@
  */
 package rest;
 
+import com.google.gson.Gson;
+import facades.AdminFacade;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -21,9 +23,10 @@ import javax.ws.rs.core.UriInfo;
 public class AdminService
 {
 
+    AdminFacade adminFacade = new AdminFacade();
+    
     @Context
     private UriInfo context;
-
 
     public AdminService()
     {
@@ -34,7 +37,8 @@ public class AdminService
     @Path("users")
     public String getUsers()
     {
-        
+        return new Gson().toJson(adminFacade.getUsers());
+
     }
 
 }
