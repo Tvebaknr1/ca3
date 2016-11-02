@@ -10,6 +10,10 @@ angular.module('myApp.view6', ['ngRoute'])
         .controller('View6Ctrl', function ($scope, userService) {
             userService.getCompanies().success(function (data) {
                 $scope.company = data;
+                $scope.companies = data.productionunits;
+
+                $scope.nmypenis = "nothing";
+                console.log($scope.company);
             });
         })
 
@@ -25,7 +29,7 @@ angular.module('myApp.view6', ['ngRoute'])
                         },
                         data: {}
                     };
-
+                    console.log("breakpoint z");
                      return $http(req);
 //                             .then(function mySucces (response) {
 //                         response.data;

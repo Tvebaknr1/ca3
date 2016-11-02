@@ -1,14 +1,26 @@
 <p>name, address, zipcode, city, cityname, phone, email, employees</p>
 <p>This is the partial for view 6.</p>
 <div>
-  <p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
+    <p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
+  
 </div>
-<table ng-repeat="data in company">
-            <tr>
-                <td>{{data.name}}</td>
-                <td>{{data.address}}</td>
-                <td>{{data.zipcode}}</td>
-                <td>{{data.city}}</td>
-            </tr>
-        </table>
-{{1+5}}
+ {{company.name}}
+ {{company.address}}
+ {{company.zipcode}}
+ {{company.city}}
+<table >
+    <thead>
+    <td>name</td>
+        <td>address</td>
+        <td>zipcode</td>
+        <td>city</td>
+    </thead>
+    <tbody ng-repeat="data in company.productionunits">
+    <tr>
+        <td>{{data.name}}</td>
+        <td>{{data.address}}</td>
+        <td>{{data.zipcode}}</td>
+        <td>{{data.city}}</td>
+    </tr>
+    </tbody>
+</table>
