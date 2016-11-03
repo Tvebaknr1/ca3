@@ -90,22 +90,4 @@ public class main {
         parserTimer.scheduleAtFixedRate(parserTimerTask,86400000 , 0);
     }
 
-    @Override
-    public void contextDestroyed(ServletContextEvent arg0) {
-        Logger logger = Logger.getRootLogger();
-        logger.info("DETECT TOMCAT SERVER IS GOING TO SHUT DOWN");
-        logger.info("CANCEL TIMER TASK AND TIMER");
-
-        otsParserTimerTask.cancel();
-
-        otsParserTimer.cancel();
-
-        logger.info("CANCELING COMPLETE");
-    }
-
-    @Override
-    public void contextInitialized(ServletContextEvent arg0) {
-
-    }
-
 }

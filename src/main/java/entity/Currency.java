@@ -30,6 +30,15 @@ public class Currency implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date updateDate;
 
+    public Currency() {
+    }
+
+    public Currency(String value, String value0, String value1) {
+        this.description = value;
+        this.code = value0;
+        this.rate = Double.parseDouble(value1);
+    }
+
     public String getCode() {
         return code;
     }
