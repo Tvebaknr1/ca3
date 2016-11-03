@@ -7,8 +7,10 @@ package rest;
 
 import com.google.gson.Gson;
 import facades.AdminFacade;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -62,4 +64,15 @@ public class AdminService
         return new Gson().toJson(adminFacade.getUsers());
 
     }
+    
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("deleteUser/{id}")
+    public void deleteUser(@PathParam("id") int id)
+    {
+        System.out.println("deletePerson");
+        adminFacade.deleteuserbyid(id);
+    }
+
+    
 }
