@@ -28,13 +28,14 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th></th>
         </tr>
     </thead>
     <tbody ng-repeat="d in data">
         <tr >
             <td>{{d[0]}}</td>
             <td>{{d[1]}}</td>
-
+            <td><a href="#/view8" ng-click="deleteUser(d[0])">Delete</a></td>
         </tr>
     </tbody>
 </table>

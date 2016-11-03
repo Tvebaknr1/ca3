@@ -10,11 +10,25 @@ angular.module('myApp.view8', ['ngRoute'])
             }])
 
         .controller('View8Ctrl', function ($http, $scope) {
-   $http.get('api/admin/users')
-            .success(function (data) {
-              $scope.data = data;
-            })
-            .error(function (status) {
-              $scope.status = status;
-             });
+            $http.get('api/admin/users')
+                    .success(function (data) {
+                        $scope.data = data;
+                    })
+                    .error(function (status) {
+                        $scope.status = status;
+                    });
+
+            $scope.deleteUser = function(id){
+                
+            
+                $http.delete("api/admin/deleteUser/"+id)
+                    .sucess(function (data) {
+                        $scope.data = data;
+                $scope.$apply();
+                    })
+                    .error(function (status) {
+                        $scope.status = status;
+                   $scope.$apply();
+                    });
+                }
         });
