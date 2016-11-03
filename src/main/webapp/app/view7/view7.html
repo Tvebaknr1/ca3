@@ -1,4 +1,20 @@
 <p>This is the partial for view 7.</p>
 <div>
-  <p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
+    <p>Data from server (Users ONLY) <b style="color: darkblue"></b></p>
 </div>
+<table >
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>code</th>
+            <th>value</th>
+        </tr>
+    </thead>
+    <tbody ng-repeat="d in data">
+        <tr>
+            <td>{{d[0]}}</td>
+            <td>{{d[1]}}</td>
+            <td>{{d[2]}}</td>
+        </tr>
+    </tbody>
+</table>

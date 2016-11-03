@@ -29,10 +29,6 @@ import org.xml.sax.helpers.XMLReaderFactory;
 @Singleton
 public class BackgroundJobManager {
 
-    public static void main(String[] args) {
-
-    }
-
     @Schedule(hour = "0", minute = "0", second = "0", persistent = false)
     public static void Updatecurrentcy() {
         try {

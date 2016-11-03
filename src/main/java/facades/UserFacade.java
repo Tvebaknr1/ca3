@@ -60,7 +60,7 @@ public class UserFacade implements IUserFacade {
 
     @Override
     public IUser getUserByUserId(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return userdata.getUserByUsername(id);
     }
 
 }

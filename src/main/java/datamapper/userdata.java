@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import security.IUser;
 import security.PasswordStorage;
 
 /**
@@ -70,5 +71,13 @@ public class userdata {
         finally{
             em.close();
         }
+    }
+
+    public static IUser getUserByUserId(String id) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        
+        return em.find(User.class, (id));
     }
 }
