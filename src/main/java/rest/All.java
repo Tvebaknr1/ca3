@@ -48,9 +48,8 @@ public class All {
     @POST
     @Path("adduser")
     @Produces(MediaType.APPLICATION_JSON)
-    public void postPerson(String content)
+    public void postPerson(String content) throws Exception
     {
-        System.out.println("add person metode");
         userFacade.createUser(new Gson().fromJson(content, entity.User.class));
     }
 }

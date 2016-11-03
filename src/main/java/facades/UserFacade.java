@@ -35,7 +35,7 @@ public class UserFacade implements IUserFacade {
      */
 
 
-    public void createUser(User user){
+    public void createUser(User user) throws Exception{
         userdata.createUser(user.getUserName(),user.getPassword(),salt);
         
     }
