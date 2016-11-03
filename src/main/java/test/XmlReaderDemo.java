@@ -24,7 +24,9 @@ import org.xml.sax.helpers.XMLReaderFactory;
  */
 public class XmlReaderDemo extends DefaultHandler {
 
-    private static ArrayList<Currency> output = new ArrayList<>();;
+    private static ArrayList<Currency> output = new ArrayList<>();
+
+    ;
 
     @Override
     public void startDocument() throws SAXException {
@@ -38,14 +40,13 @@ public class XmlReaderDemo extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-         
+
         for (int i = 0; i < attributes.getLength(); i += 3) {
-            if(localName.equals("currency")&&!attributes.getValue(i).equals("ISK"))
-            {
+            if (localName.equals("currency") && !attributes.getValue(i).equals("ISK")) {
 //                System.out.println(attributes.getValue(i).equals("ISK"));
 //            System.out.println(i);
 //            System.out.println(attributes.getValue(i)+attributes.getValue(i+1)+attributes.getValue(i+2));
-            output.add(new Currency(attributes.getValue(i), attributes.getValue(i + 1), attributes.getValue(i + 2)));
+                output.add(new Currency(attributes.getValue(i), attributes.getValue(i + 2), attributes.getValue(i + 1)));
             }
 
         }
