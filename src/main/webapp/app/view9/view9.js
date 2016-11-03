@@ -11,8 +11,8 @@ angular.module('myApp.view9', ['ngRoute'])
             $http.post('api/demoall/adduser', jsonObject).success(function (res) {
                 console.log("added");
                 $scope.data = res.data;
-            }).error(function (data) {
-                $scope.status = data;
+            }).error(function (status) {
+                $scope.status = status;
             });
         };
     }]);

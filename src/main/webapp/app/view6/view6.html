@@ -28,10 +28,7 @@
         padding: 15px;
     }
 </style>
-<p>name, address, zipcode, city, cityname, phone, email, employees</p>
-<p>This is the partial for view 6.</p>
 <div>
-    <p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
     <form>
         <label for="options">Options </label><select id="options" ng-model="filterType">    
             <option value="name">Name</option>
@@ -40,11 +37,6 @@
             <option value="city">City</option>
         </select><br>
         <label for="search">Search Text</label><input type="text" id="search" value="required" ng-model="search[filterType]"><br>
-
-        <label for="country">Country </label><select id="country">
-            <option>DK</option>
-            <option>NO</option>
-        </select><br>
     </form>
 
 </div>

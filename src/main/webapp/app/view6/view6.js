@@ -35,13 +35,6 @@ angular.module('myApp.view6', ['ngRoute'])
                     };
                     console.log("breakpoint z");
                     return $http(req);
-//                             .then(function mySucces (response) {
-//                         response.data;
-//                    }, function myError (response) {
-//                        return response.statusText;
-//                    });
-//                    $http.defaults.headers.common.Authorization = "CVR API-CA3 SCHOOL Exercise-YOUR NAMEYOUREMAIL@cphbusiness.dk";
-//                            return $http.get("http://cvrapi.dk/api?vat=3167%208021&country=dk");
                 }
             };
         });

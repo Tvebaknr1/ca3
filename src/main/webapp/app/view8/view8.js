@@ -14,7 +14,7 @@ angular.module('myApp.view8', ['ngRoute'])
             .success(function (data) {
               $scope.data = data;
             })
-            .error(function () {
-              
+            .error(function (status) {
+              $scope.status = status;
              });
         });

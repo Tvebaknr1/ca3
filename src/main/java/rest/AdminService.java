@@ -24,7 +24,7 @@ public class AdminService
 {
 
     AdminFacade adminFacade = new AdminFacade();
-    
+
     @Context
     private UriInfo context;
 
@@ -37,8 +37,29 @@ public class AdminService
     @Path("users")
     public String getUsers()
     {
+//        List<Object> users =  adminFacade.getUsers();
+//        JsonArray JSONUsers = new JsonArray();
+//        
+//        for (int i = 0; i < users.size(); i++)
+//        {
+//            JsonObject jo = new JsonObject();
+//            jo.addProperty("Id", ((entity.User) users.get(i)).getId());
+//            jo.addProperty("userName", ((entity.User)users.get(i)).getUserName());
+//            List<String> roles = ((entity.User)users.get(i)).getRoles();
+//        
+//            JsonArray j = new JsonArray();
+//            for (int k = 0; k < roles.size(); k++)
+//            {
+//                JsonObject jo1 = new JsonObject();
+//                jo1.addProperty("role", ((entity.User)users.get(k)).getRoles().get(i));
+//                j.add(jo1);
+//            }
+//            
+//            jo.add("roles", j);
+//            JSONUsers.add(jo);
+//        }
+//
         return new Gson().toJson(adminFacade.getUsers());
 
     }
-
 }

@@ -61,6 +61,16 @@ public class User implements IUser, Serializable{
     this.userName = userName;
   }
 
+    public int getId()
+    {
+        return Id;
+    }
+
+    public List<String> getRoles()
+    {
+        return roles;
+    }
+
  
           
 }

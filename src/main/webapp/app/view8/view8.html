@@ -1,3 +1,40 @@
-<p>All users</p>
+<style>
+    table, th, td{
+        border: 1px solid #999;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 
-<div ng-repeat="d in data">{{d}}</div>
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 15px;
+    }
+    
+    p{
+        color: black;
+        font-size: large;
+    }
+</style>
+
+<p><b>All users</b></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody ng-repeat="d in data">
+        <tr >
+            <td>{{d[0]}}</td>
+            <td>{{d[1]}}</td>
+
+        </tr>
+    </tbody>
+</table>
