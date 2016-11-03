@@ -3,6 +3,7 @@ package entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class User implements IUser, Serializable{
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int Id;
   private String password;  //Pleeeeease dont store me in plain text
+  @Column(unique=true)
   private String userName;
   List<String> roles = new ArrayList();
 

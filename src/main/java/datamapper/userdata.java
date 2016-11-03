@@ -34,7 +34,7 @@ public class userdata {
         return query;
     }
 
-    public static void createUser(String userName, String password,String salt) {
+    public static void createUser(String userName, String password,String salt) throws Exception {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();

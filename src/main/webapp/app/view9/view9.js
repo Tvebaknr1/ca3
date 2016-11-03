@@ -9,10 +9,9 @@ angular.module('myApp.view9', ['ngRoute'])
         $scope.add = function (username, password) {
             var jsonObject = {"userName": username, "password": password};
             $http.post('api/demoall/adduser', jsonObject).success(function (res) {
-                console.log("added");
                 $scope.data = res.data;
-            }).error(function (status) {
-                $scope.status = status;
+            }).error(function (reponse) {
+                $scope.status = reponse.statusText;
             });
         };
     }]);

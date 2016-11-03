@@ -6,14 +6,19 @@
 package test;
 
 import entity.User;
-import facades.UserFacade;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javafx.scene.input.KeyCode.PERIOD;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.servlet.ServletContextEvent;
+import org.xml.sax.SAXException;
 import security.IUser;
 import security.PasswordStorage;
 
@@ -34,7 +39,7 @@ public class main {
         Persistence.generateSchema("ca3", null);
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
         EntityManager em = emf.createEntityManager();
-        User user = new User("user", PasswordStorage.createHash("test"+salt));
+        User user = new User("user", PasswordStorage.createHash("test" + salt));
         user.addRole("User");
         em.getTransaction().begin();
         em.flush();
@@ -44,7 +49,7 @@ public class main {
         System.out.println("test");
         users.put(user.getUserName(), user);
         em = emf.createEntityManager();
-        User admin = new User("admin", PasswordStorage.createHash("test"+salt));
+        User admin = new User("admin", PasswordStorage.createHash("test" + salt));
         admin.addRole("Admin");
         em.getTransaction().begin();
         em.persist(admin);
@@ -53,7 +58,7 @@ public class main {
         System.out.println("test2");
         users.put(admin.getUserName(), admin);
         em = emf.createEntityManager();
-        User both = new User("user_admin", PasswordStorage.createHash("test"+salt));
+        User both = new User("user_admin", PasswordStorage.createHash("test" + salt));
         both.addRole("User");
         both.addRole("Admin");
         em.getTransaction().begin();
@@ -64,10 +69,43 @@ public class main {
 
         users.put(both.getUserName(), both);
     }
-    
-    public void updateCurrencies()
-    {
-        
+
+    Timer parserTimer;
+    TimerTask parserTimerTask;
+
+    public void init() {
+        parserTimerTask = new TimerTask() {
+            XmlReaderDemo xmlR = new XmlReaderDemo();
+            @Override
+            public void run() {
+                try {
+                    xmlR.startDocument();
+                } catch (SAXException ex) {
+                    Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+
+        parserTimer = new Timer();
+        parserTimer.scheduleAtFixedRate(parserTimerTask,86400000 , 0);
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent arg0) {
+        Logger logger = Logger.getRootLogger();
+        logger.info("DETECT TOMCAT SERVER IS GOING TO SHUT DOWN");
+        logger.info("CANCEL TIMER TASK AND TIMER");
+
+        otsParserTimerTask.cancel();
+
+        otsParserTimer.cancel();
+
+        logger.info("CANCELING COMPLETE");
+    }
+
+    @Override
+    public void contextInitialized(ServletContextEvent arg0) {
+
     }
 
 }
