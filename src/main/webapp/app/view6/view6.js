@@ -12,6 +12,12 @@ angular.module('myApp.view6', ['ngRoute'])
                 $scope.company = data;
                 $scope.companies = data.productionunits;
             });
+            
+            $scope.showDetails = function()
+            {
+                $scope.detailModel = this.data;
+                $('#viewModal').modal('show');
+            };
         })
 
         .factory('userService', function ($http) {
@@ -21,12 +27,10 @@ angular.module('myApp.view6', ['ngRoute'])
                         method: 'GET',
                         url: 'http://cvrapi.dk/api?vat=3167%208021&country=dk',
                         skipAuthorization: true,
-                        headers: {
-                            'User-Agent': "CVR API-CA3 SCHOOL Exercise-Gruppe 6, cph-ec57@cphbusiness.dk"
-                        },
+                        
                         data: {}
                     };
-                     return $http(req);
+                    return $http(req);
 //                             .then(function mySucces (response) {
 //                         response.data;
 //                    }, function myError (response) {

@@ -1,26 +1,94 @@
+<style>
+
+    label {
+        width:10%;
+        font-weight:bold;
+       margin-top: 5px;
+        margin-bottom: 5px;
+    
+    }
+
+    input, select {
+        border: 1px solid #999;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    }
+    table, th, td{
+        border: 1px solid #999;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+   
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 15px;
+    }
+</style>
 <p>name, address, zipcode, city, cityname, phone, email, employees</p>
 <p>This is the partial for view 6.</p>
 <div>
     <p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
+    <form>
+        <label for="options">Options </label><select id="options" ng-model="filterType">    
+            <option value="name">Name</option>
+            <option value="address">Address</option>
+            <option value="zipcode">Zipcode</option>
+            <option value="city">City</option>
+        </select><br>
+        <label for="search">Search Text</label><input type="text" id="search" value="required" ng-model="search[filterType]"><br>
+
+        <label for="country">Country </label><select id="country">
+            <option>DK</option>
+            <option>NO</option>
+        </select><br>
+    </form>
 
 </div>
-{{company.name}}
-{{company.address}}
-{{company.zipcode}}
-{{company.city}}
 <table >
     <thead>
-    <td>name</td>
-    <td>address</td>
-    <td>zipcode</td>
-    <td>city</td>
-</thead>
-<tbody ng-repeat="data in company.productionunits">
-    <tr>
-        <td>{{data.name}}</td>
-        <td>{{data.address}}</td>
-        <td>{{data.zipcode}}</td>
-        <td>{{data.city}}</td>
-    </tr>
-</tbody>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Zipcode</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody ng-repeat="data in company.productionunits| filter: search">
+        <tr>
+            <td><a href="javascript:;" ng-click="showDetails(data)">{{data.name}}</a></td>
+            <td>{{data.address}}</td>
+            <td>{{data.zipcode}}</td>
+            <td>{{data.city}}</td>
+        </tr>
+    </tbody>
 </table>
+
+
+<div class="modal fade" id="viewModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{detailModel.name}}</h4>
+        </div>
+        <div class="modal-body">
+         <div>
+            <p>Name: {{detailModel.name}}</p>
+            <p>{{detailModel.industrydesc}}</p>
+            <p>E-mail: {{detailModel.email}}</p>
+            <p>Phone: {{detailModel.phone}}</p>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
