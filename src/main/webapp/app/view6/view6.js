@@ -15,6 +15,12 @@ angular.module('myApp.view6', ['ngRoute'])
                 $scope.nmypenis = "nothing";
                 console.log($scope.company);
             });
+            
+            $scope.showDetails = function()
+            {
+                $scope.detailModel = this.data;
+                $('#viewModal').modal('show');
+            };
         })
 
         .factory('userService', function ($http) {

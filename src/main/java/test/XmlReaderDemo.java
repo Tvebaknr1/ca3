@@ -41,8 +41,6 @@ public class XmlReaderDemo extends DefaultHandler {
             //currency.setCode(qName);
             System.out.print("[Atribute: NAME: " + attributes.getQName(i)+" ");
                     System.out.println("VALUE: " + attributes.getValue(i)+" ");
-            
-            
         }
         System.out.println("");
         
