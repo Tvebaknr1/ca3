@@ -5,6 +5,7 @@
  */
 package facades;
 
+import com.google.gson.Gson;
 import datamapper.currencydata;
 import entity.Currency;
 import entity.User;
@@ -31,25 +32,49 @@ public class currencyFacade {
             List<Currency> currency = null;
 
             em.getTransaction().begin();
-            currency =  em.createQuery("Select c.code, c.description, c.rate from Currency c").getResultList();
+            currency =  em.createQuery("Select c.code, c.description, c.rate from Currency c",Currency.class).getResultList();
+            
             return currency;
         } finally
         {
             em.close();
         }
+        
+
+    }
+    public static List<Currency> getnewCurrency()
+    {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
+        EntityManager em = emf.createEntityManager();
+        try
+        {
+
+            List<Currency> currency = null;
+
+            em.getTransaction().begin();
+            currency =  em.createQuery("from Currency c",Currency.class).getResultList();
+            
+            return currency;
+        } finally
+        {
+            em.close();
+        }
+        
 
     }
     public static double convertCurrency(int i,String from,String to){
-        List<Currency> cur = getCurrency();
+        List<Currency> cur = getnewCurrency();
         Currency curfrom = null;
         Currency curto = null;
         double res = 0;
+        
         for (Currency currency : cur) {
-            if(currency.getCode().equals(from))
+            System.out.println(currency.getCode());
+            if(currency.getDescription().equals(from))
             {
                 curfrom = currency;
             }
-            else if(currency.getCode().equals(to))
+            else if(currency.getDescription().equals(to))
             {
                 curto = currency;
             }
@@ -59,6 +84,8 @@ public class currencyFacade {
         {
             res = i * curfrom.getRate() / curto.getRate();
         }
-        return 0;
+        System.out.println(curfrom);
+        System.out.println(curto);
+        return res;
     }
 }
