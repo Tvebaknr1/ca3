@@ -50,27 +50,6 @@ public class XmlReaderDemo extends DefaultHandler {
             }
 
         }
-//        try {
-//            Thread.sleep(2000);
-//        } catch (InterruptedException ex) {
-//            Logger.getLogger(XmlReaderDemo.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        for (int i = 0; i < attributes.getLength(); i++) {
-//            System.out.println(attributes.getValue(i));
-//        }
-//        output = new ArrayList<>();
-//        for (int i = 0; i < attributes.getLength(); i += 3) {
-//            if (i == 0) {
-//                i++;
-//            }
-//            System.out.println(i);
-//            System.out.println("name: " + attributes.getValue(i)
-//                    + "code: " + attributes.getValue(i + 1)
-//                    + "Currencyvalue: " + attributes.getValue(i + 2));
-//            //System.out.println(attributes.getValue(i)+attributes.getValue(i+1)+attributes.getValue(i+2));
-//            output.add(new Currency(attributes.getValue(i), attributes.getValue(i + 1), attributes.getValue(i + 2)));
-//
-//        }
     }
 
     public static ArrayList getoutput() {
