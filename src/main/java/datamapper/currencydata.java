@@ -6,16 +6,9 @@
 package datamapper;
 
 import entity.Currency;
-import entity.User;
-import facades.UserFacade;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import security.PasswordStorage;
 
 /**
  *
@@ -27,9 +20,16 @@ public class currencydata {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-
         em.persist(cur);
         em.getTransaction().commit();
+        em.close();
+    }
+
+    public static void flush() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.flush();
         em.close();
     }
 }
