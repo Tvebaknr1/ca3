@@ -45,8 +45,8 @@ public class XmlReaderDemo extends DefaultHandler {
             if (localName.equals("currency") && !attributes.getValue(i).equals("ISK")) {
 //                System.out.println(attributes.getValue(i).equals("ISK"));
 //            System.out.println(i);
-//            System.out.println(attributes.getValue(i)+attributes.getValue(i+1)+attributes.getValue(i+2));
-                output.add(new Currency(attributes.getValue(i), attributes.getValue(i + 2), attributes.getValue(i + 1)));
+                System.out.println(attributes.getValue(i + 1) + attributes.getValue(i) + attributes.getValue(i + 2));
+                output.add(new Currency(attributes.getValue(i + 1), attributes.getValue(i), attributes.getValue(i + 2)));
             }
 
         }

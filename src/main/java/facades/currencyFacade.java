@@ -20,6 +20,7 @@ import javax.persistence.Persistence;
  */
 public class currencyFacade {
     public static void createcurrency(Currency cur){
+        currencydata.flush();
         currencydata.createcurrecy(cur);
     }
     public static List<Currency> getCurrency()

@@ -33,10 +33,10 @@ public class Currency implements Serializable {
     public Currency() {
     }
 
-    public Currency(String value, String value0, String value1) {
-        this.description = value;
-        this.code = value0;
-        this.rate = Double.parseDouble(value1);
+    public Currency(String description, String code, String rate) {
+        this.description = description;
+        this.code = code;
+        this.rate = Double.parseDouble(rate);
     }
 
     public String getCode() {
