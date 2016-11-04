@@ -66,8 +66,17 @@ public class main {
         em.getTransaction().commit();
         em.close();
         System.out.println("test3");
-
         users.put(both.getUserName(), both);
+        User deleteUser = new User("deleteMe", PasswordStorage.createHash("test" + salt));
+        user.addRole("User");
+        em.getTransaction().begin();
+        em.flush();
+        em.persist(deleteUser);
+        em.getTransaction().commit();
+        em.close();
+        System.out.println("test4");
+        users.put(user.getUserName(), user);
+        
     }
 
     Timer parserTimer;

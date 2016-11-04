@@ -30,15 +30,14 @@
 </style>
 <div>
     <form>
-        <label for="options">Options </label>
-        <select id="options" ng-model="filterType" >    
+        <label for="te">Options </label>
+        <select id="test" ng-model="filterType" ng-init="test = name">    
             <option value="name">Name</option>
             <option value="address">Address</option>
             <option value="zipcode">Zipcode</option>
             <option value="city">City</option>
         </select><br>
-        <script>document.getElementById("selectMenu").selected = "name";
-        console.log(document.getElementById("selectMenu"))</script>
+        
         
         <label for="search">Search Text</label><input type="text" id="search" value="required" ng-model="search[filterType]"><br>
     </form>
