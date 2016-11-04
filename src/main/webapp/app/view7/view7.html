@@ -1,12 +1,42 @@
+<style>
+
+    label {
+        width:10%;
+        font-weight:bold;
+       margin-top: 5px;
+        margin-bottom: 5px;
+    
+    }
+
+    input, button {
+        border: 1px solid #999;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    }
+    table, th, td{
+        border: 1px solid #999;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+   
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 15px;
+    }
+</style>
 <p>This is the partial for view 7.</p>
-<div>
+<form>
     <p>Data from server (Users ONLY) <b style="color: darkblue"></b></p>
-    <input ng-model="amount" type="number" name="amount" value=""  />
-    <input ng-model="from" type="text" name="from" value="from" />
-<input ng-model="to" type="text" name="to" value="to" />
-<input ng-click="calulus()" type="submit" value="caculate" />
-<input ng-model="data1" type="text" name="amount" value="" readonly=""/>
-</div>
+    <label for="amount">Amount: </label><input ng-model="amount" type="number" name="amount" id="amount"  /><br>
+    <label for="from">From: </label><input ng-model="from" type="text" name="from" value="from" id="from" /><br>
+    <label for="to">To: </label><input ng-model="to" type="text" name="to" value="to" id="to" /><br>
+    <label for="calc"><input ng-click="calulus()" type="submit" value="Caculate" /></label>
+<input ng-model="data1" type="text" name="amount" value="" readonly="" id="calc"/>
+</form>
 
 <table >
     <thead>

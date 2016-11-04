@@ -32,13 +32,13 @@ public class SomeDailyJob implements Runnable {
             xr.parse(new InputSource(url.openStream()));
             ArrayList<Currency> array;
             array = XmlReaderDemo.getoutput();
+            array.add(new Currency("Danske Kroner", "DKK", "1"));
             for (Currency currency : array) {
                 currencyFacade.createcurrency(currency);
             }
         } catch (SAXException | IOException ex) {
             Logger.getLogger(BackgroundJobManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-                
     }
 
 }
