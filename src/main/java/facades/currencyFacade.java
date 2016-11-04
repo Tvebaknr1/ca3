@@ -69,12 +69,11 @@ public class currencyFacade {
         double res = 0;
         
         for (Currency currency : cur) {
-            System.out.println(currency.getCode());
-            if(currency.getDescription().equals(from))
+            if(currency.getCode().equals(from))
             {
                 curfrom = currency;
             }
-            else if(currency.getDescription().equals(to))
+            else if(currency.getCode().equals(to))
             {
                 curto = currency;
             }
@@ -84,8 +83,6 @@ public class currencyFacade {
         {
             res = i * curfrom.getRate() / curto.getRate();
         }
-        System.out.println(curfrom);
-        System.out.println(curto);
         return res;
     }
 }
