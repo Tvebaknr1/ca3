@@ -9,8 +9,8 @@ import com.google.gson.Gson;
 import facades.currencyFacade;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -29,9 +29,9 @@ public class currency {
         return new Gson().toJson(currencyFacade.getCurrency());
     }
     @GET
-    @Path("calculator")
+    @Path("calculator/{amount}/{fromCurrency}/{toCurrency}")
     @Produces(MediaType.APPLICATION_JSON)
-    public static String postPerson(String amount,String fromcurrency,String tocurrency) throws Exception
+    public static String postPerson(@PathParam("amount") String amount, @PathParam("fromCurrency") String fromcurrency, @PathParam("toCurrency") String tocurrency) throws Exception
     {
         int iamount = Integer.parseInt(amount);
         return new Gson().toJson(currencyFacade.convertCurrency(iamount, fromcurrency, tocurrency));
