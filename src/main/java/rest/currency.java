@@ -31,7 +31,7 @@ public class currency {
     @GET
     @Path("calculator/{amount}/{fromCurrency}/{toCurrency}")
     @Produces(MediaType.APPLICATION_JSON)
-    public static String postPerson(@PathParam("amount") String amount, @PathParam("fromCurrency") String fromcurrency, @PathParam("toCurrency") String tocurrency) throws Exception
+    public static String getValutaConverter(@PathParam("amount") String amount, @PathParam("fromCurrency") String fromcurrency, @PathParam("toCurrency") String tocurrency) throws Exception
     {
         int iamount = Integer.parseInt(amount);
         return new Gson().toJson(currencyFacade.convertCurrency(iamount, fromcurrency, tocurrency));
