@@ -37,6 +37,12 @@ public class User implements IUser, Serializable{
     this.password = password;
     this.roles = roles;
   }
+  public User(String userName, String password,List<String> roles,int id) {
+    this.userName = userName;
+    this.password = password;
+    this.roles = roles;
+    this.Id = id;
+  }
   
   public void addRole(String role){
     roles.add(role);
