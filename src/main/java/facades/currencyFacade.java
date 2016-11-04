@@ -39,4 +39,26 @@ public class currencyFacade {
         }
 
     }
+    public static double convertCurrency(int i,String from,String to){
+        List<Currency> cur = getCurrency();
+        Currency curfrom = null;
+        Currency curto = null;
+        double res = 0;
+        for (Currency currency : cur) {
+            if(currency.getCode().equals(from))
+            {
+                curfrom = currency;
+            }
+            else if(currency.getCode().equals(to))
+            {
+                curto = currency;
+            }
+            
+        }
+        if(curfrom!=null && curto!=null)
+        {
+            res = i * curfrom.getRate() / curto.getRate();
+        }
+        return 0;
+    }
 }
