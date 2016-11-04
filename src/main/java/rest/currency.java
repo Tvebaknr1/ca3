@@ -31,8 +31,9 @@ public class currency {
     @GET
     @Path("calculator")
     @Produces(MediaType.APPLICATION_JSON)
-    public String postPerson(String content) throws Exception
+    public static String postPerson(String amount,String fromcurrency,String tocurrency) throws Exception
     {
-        return new Gson().toJson(currencyFacade.getCurrency());
+        int iamount = Integer.parseInt(amount);
+        return new Gson().toJson(currencyFacade.convertCurrency(iamount, fromcurrency, tocurrency));
     }
 }

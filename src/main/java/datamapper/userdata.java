@@ -54,6 +54,25 @@ public class userdata {
             em.close();
         }
     }
+    public static void createUser(String userName, String password,String salt,int id) throws Exception {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        List<String> list;
+        list = new ArrayList();
+        list.add("User");
+        
+        try {
+            em.persist(new User(userName, PasswordStorage.createHash(password + salt),list,id));
+            em.getTransaction().commit();
+            
+        } catch (PasswordStorage.CannotPerformOperationException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            em.close();
+        }
+    }
     public static void createAdmin(String userName, String password,String salt) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ca3");
         EntityManager em = emf.createEntityManager();
