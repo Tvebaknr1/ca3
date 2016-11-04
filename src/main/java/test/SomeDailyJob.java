@@ -39,7 +39,6 @@ public class SomeDailyJob implements Runnable {
         } catch (SAXException | IOException ex) {
             Logger.getLogger(BackgroundJobManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-                
     }
 
 }
