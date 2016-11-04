@@ -24,6 +24,13 @@ public class currency {
     @GET
     @Path("dailyrates")
     @Produces(MediaType.APPLICATION_JSON)
+    public String getdaliyrates(String content) throws Exception
+    {
+        return new Gson().toJson(currencyFacade.getCurrency());
+    }
+    @GET
+    @Path("calculator")
+    @Produces(MediaType.APPLICATION_JSON)
     public String postPerson(String content) throws Exception
     {
         return new Gson().toJson(currencyFacade.getCurrency());
