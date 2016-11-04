@@ -25,8 +25,7 @@ public class AdminFacade
         try
         {
 
-            List<User> users = null;
-
+            List<User> users;
             em.getTransaction().begin();
             users =  em.createQuery("Select u.Id, u.userName from User u").getResultList();
             return users;
