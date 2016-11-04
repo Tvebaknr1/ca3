@@ -1,3 +1,5 @@
+//package test;
+//
 ///*
 // * To change this license header, choose License Headers in Project Properties.
 // * To change this template file, choose Tools | Templates
@@ -15,17 +17,16 @@
 // *
 // * @author LouiseB
 // */
-//public class AdminFacadeIntegrationTest
+//public class CurrencyIntegrationTest
 //{
 //
-//    public AdminFacadeIntegrationTest()
+//    public CurrencyIntegrationTest()
 //    {
 //    }
 //
 //    @BeforeClass
 //    public static void setUpClass()
 //    {
-//
 //    }
 //
 //    @AfterClass
@@ -47,8 +48,6 @@
 //    public void webPageIsRunning()
 //    {
 //        given().when().get("http://localhost:8080/ca3").then().statusCode(200);
-//
-//
 //    }
 //
 //    @Test
@@ -58,38 +57,15 @@
 //
 //    }
 //
-//    @Test
-//    public void getUserTest()
-//    {
-//        given().when().get("http://localhost:8080/ca3/api/admin/users").then().statusCode(200);
-//    }
-//    
-//   
-//    /**
-//     * Test of getUsers method, of class AdminFacade.
-//     */
 ////    @Test
-////    public void testGetUsers()
+////    public void getCurrencyTest()
 ////    {
-////        System.out.println("getUsers");
-////        AdminFacade instance = new AdminFacade();
-////        List<User> expResult = {};
-////        List<entity.User> result = instance.getUsers();
-////        assertEquals(expResult, result);
-////        fail("The test case is a prototype.");
+////        given().when().get("http://localhost:8080/ca3/api/currency/dailyrates").then().statusCode(200);
 ////    }
-////
-////    /**
-////     * Test of deleteuserbyid method, of class AdminFacade.
-////     */
+//    
 ////    @Test
-////    public void testDeleteuserbyid()
+////    public void getValutaConverterTest()
 ////    {
-////        System.out.println("deleteuserbyid");
-////        int i = 0;
-////        AdminFacade instance = new AdminFacade();
-////        instance.deleteuserbyid(i);
-////        // TODO review the generated test code and remove the default call to fail.
-////        fail("The test case is a prototype.");
+////        given().when().get("http://localhost:8080/ca3/api/currency/calculator/100/AUD/BRL").then().statusCode(200);
 ////    }
 //}

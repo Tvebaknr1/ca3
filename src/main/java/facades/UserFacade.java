@@ -18,22 +18,8 @@ public class UserFacade implements IUserFacade {
     private String salt = "salt";
 
     public UserFacade() {
-        //Test Users
-        
+  
     }
-
-//    @Override
-//    public IUser getUserByUserId(String id) {
-//        return //users.get(id);
-//    }
-
-    /**
-     *
-     * puttes user in database return true if success
-     * @param user
-     * @return succus
-     */
-
 
     public void createUser(User user) throws Exception{
         userdata.createUser(user.getUserName(),user.getPassword(),salt);
