@@ -10,6 +10,7 @@ angular.module('myApp.view9', ['ngRoute'])
             var jsonObject = {"userName": username, "password": password};
             $http.post('api/demoall/adduser', jsonObject).success(function (res) {
                 $scope.data = res.data;
+                alert("Du er blevet oprettet");
             }).error(function (reponse) {
                 $scope.status = reponse.statusText;
             });
