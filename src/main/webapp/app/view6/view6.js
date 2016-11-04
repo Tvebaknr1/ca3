@@ -25,7 +25,7 @@ angular.module('myApp.view6', ['ngRoute'])
                 getCompanies: function () {
                     var req = {
                         method: 'GET',
-                        url: 'http://cvrapi.dk/api?vat=3167%208021&country=dk',
+                        url: 'http://cvrapi.dk/api?vat=3167%208021&country=dk', //? + value + &contr... + dk
                         skipAuthorization: true,
                         
                         data: {}
