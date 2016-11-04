@@ -10,23 +10,31 @@ angular.module('myApp.view8', ['ngRoute'])
             }])
 
         .controller('View8Ctrl', function ($http, $scope) {
-            $scope.getAllUsers = function () {
+            
                 $http.get('api/admin/users')
                         .success(function (data) {
                             $scope.data = data;
+                    console.log("hentning af data fuldført");
                         })
                         .error(function (status) {
                             $scope.status = status;
                         });
-            }();
+            
             $scope.deleteUser = function (id) {
                 $http.delete("api/admin/deleteUser/" + id)
                         .success(function () {
-                            $scope.getAllUsers();
+                            $scope.refresh();
+                    console.log("side burde refresheh her");
                         })
-                        .error(function (status) {
+                       .error(function (status) {
                             $scope.status = status;
                         });
+            };
+            $scope.refresh = function(){
+              $http.get('api/admin/users').success(function(data){
+                  $scope.data = data;
+                  console.log("refresh fcntion");
+              });     
             };
 
         });
