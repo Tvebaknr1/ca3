@@ -4,10 +4,7 @@
  * and open the template in the editor.
  */
 
-import datamapper.userdata;
 import static io.restassured.RestAssured.given;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -67,18 +64,7 @@ public class AdminFacadeIntegrationTest
         given().when().get("http://localhost:8080/ca3/api/admin/users").then().statusCode(200);
     }
     
-    @Test
-    public void deleteUserTest()
-    {
-        try
-        {
-            userdata.createUser("DeleteMe", "1234", "salt", 10);
-        } catch (Exception ex)
-        {
-            Logger.getLogger(AdminFacadeIntegrationTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        given().when().delete("http://localhost:8080/ca3/api/admin/deleteUser/10").then().statusCode(204);
-    }    
+   
     /**
      * Test of getUsers method, of class AdminFacade.
      */
