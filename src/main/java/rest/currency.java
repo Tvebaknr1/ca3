@@ -24,7 +24,7 @@ public class currency {
     @GET
     @Path("dailyrates")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getdaliyrates(String content) throws Exception
+    public String getdaliyrates() throws Exception
     {
         return new Gson().toJson(currencyFacade.getCurrency());
     }
